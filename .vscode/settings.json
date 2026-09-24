@@ -1,0 +1,15 @@
+{
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib\\mysql-connector-j-9.7.0.jar",
+        "d:\\oTHERS\\SELF\\New Scratch\\Coding\\Projects\\java\\StudentManagementSystem\\lib\\mysql-connector-j-9.7.0.jar"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "D:\\oTHERS\\SELF\\New Scratch\\Coding\\Projects\\java\\StudentManagementSystem\\lib"
+    ]
+
+}
