@@ -6,8 +6,8 @@ public class StudentDAO{
         
         // SQL DATA INSERT QUERY 
         String sql = "INSERT INTO students " +
-                     "(name, mobilenumber, address, course) " +
-                     "VALUES (?, ?, ?, ?)";
+                     "(Sname, Sdob, Smobilenumber, Saddress, Scourse) " +
+                     "VALUES (?, ?, ?, ?, ?)";
         try {
             Connection connection = DBConnection.getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -43,12 +43,12 @@ public class StudentDAO{
 
                     Student student = new Student();
 
-                    student.setId(rs.getInt("id"));
-                    student.setName(rs.getString("name"));
-                    student.setDob(rs.getString("dob"));
-                    student.setMobileNumber(rs.getString("mobileNumber"));
-                    student.setAddress(rs.getString("address"));
-                    student.setCourse(rs.getString("course"));
+                    student.setId(rs.getInt("Sid"));
+                    student.setName(rs.getString("Sname"));
+                    student.setDob(rs.getString("Sdob"));
+                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setAddress(rs.getString("Saddress"));
+                    student.setCourse(rs.getString("Scourse"));
 
                     System.out.println("----------------------------------------------------------");
                     System.out.println(student);
@@ -64,13 +64,13 @@ public class StudentDAO{
     }  
 
     // SEARCH STUDENT BY THEIR NAME.
-    public static void searchStudentName(String name){
-        String sql = "SELECT * FROM student WHERE name = ?";
+    public static void searchStudentName(String Sname){
+        String sql = "SELECT * FROM student WHERE Sname = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
             
-                ps.setString(1, name);
+                ps.setString(1, Sname);
                 ResultSet rs = ps.executeQuery();
 
                 boolean found = false;
@@ -78,11 +78,12 @@ public class StudentDAO{
                     found = true;
                     Student student = new Student();
 
-                    student.setId(rs.getInt("id"));
-                    student.setName(rs.getString("name"));
-                    student.setDob(rs.getString("dob"));
-                    student.setMobileNumber(rs.getString("mobileNumber"));
-                    student.setAddress(rs.getString("address"));
+                    student.setId(rs.getInt("Sid"));
+                    student.setName(rs.getString("Sname"));
+                    student.setDob(rs.getString("Sdob"));
+                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setAddress(rs.getString("Saddress"));
+                    student.setCourse(rs.getString("Scourse"));
 
                     System.out.println("-----------------------------------------------------");
                     System.out.println(student);
@@ -98,7 +99,7 @@ public class StudentDAO{
     }
     // SEARCH STUDENT BY THEIR ID.
     public static void searchStudentId(int id){
-        String sql = "SELECT * FROM student WHERE id = ?";
+        String sql = "SELECT * FROM student WHERE Sid = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)){
@@ -109,11 +110,12 @@ public class StudentDAO{
                     found = true;
                     Student student = new Student();
 
-                    student.setId(rs.getInt("id"));
-                    student.setName(rs.getString("name"));
-                    student.setDob(rs.getString("dob"));
-                    student.setMobileNumber(rs.getString("mobileNumber"));
-                    student.setAddress(rs.getString("address"));
+                    student.setId(rs.getInt("Sid"));
+                    student.setName(rs.getString("Sname"));
+                    student.setDob(rs.getString("Sdob"));
+                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setAddress(rs.getString("Saddress"));
+                    student.setCourse(rs.getString("Scourse"));
 
                     System.out.println("-----------------------------------------------------");
                     System.out.println(student);
@@ -131,7 +133,7 @@ public class StudentDAO{
 
     // DELETE STUDENT BY THEIR ID.
     public static void deleteStudentId(int id){
-        String sql = "DELET FROM student WHERE name = ?";
+        String sql = "DELET FROM student WHERE Sname = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)){

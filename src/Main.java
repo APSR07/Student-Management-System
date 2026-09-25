@@ -22,6 +22,8 @@ public class Main {
                     Student student = new Student();
                     System.out.println("Enter Student name :");
                     student.setName(sc.nextLine());
+                    System.out.println("Enter DOB :");
+                    student.setDob(sc.nextLine());
                     System.out.println("Enter Mobile Number :");
                     student.setMobileNumber(sc.nextLine());
                     System.out.println("Enter Address : ");
