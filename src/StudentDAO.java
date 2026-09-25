@@ -1,4 +1,7 @@
 import java.sql.*;
+
+import com.mysql.cj.protocol.Resultset;
+
 public class StudentDAO{
     // insert student
     public static void insertStudent(Student student) {
@@ -61,4 +64,38 @@ public class StudentDAO{
             e.printStackTrace();
         }
     }  
+
+    // SEARCH STUDENT BY THEIR NAME.
+    public static void searchStudentName(String name){
+        String sql = "SELECT * FROM student WHERE name = ?";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            
+                ps.setString(1, name);
+                ResultSet rs = ps.executeQuery();
+
+                boolean found = false;
+                while (rs.next()) {
+                    found = true;
+                    Student student = new Student();
+
+                    student.setId(rs.getInt("id"));
+                    student.setName(rs.getString("name"));
+                    student.setDob(rs.getString("dob"));
+                    student.setMobileNumber(rs.getString("mobileNumber"));
+                    student.setAddress(rs.getString("address"));
+
+                    System.out.println("-----------------------------------------------------");
+                    System.out.println(student);
+                }
+
+                if(!found){
+                    System.out.println("student not found");
+                }
+                
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

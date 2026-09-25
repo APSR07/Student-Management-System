@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.Connection;
 public class Main {
     public static void main(String[] args) {
         Connection connection = DBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
-        ArrayList<Student> students = new ArrayList<>();
+
         boolean running = true;
         while (running) {
             System.out.println("--------WELCOME TO STUDENT MANAGEMENT SYSTEM---------");
@@ -15,7 +14,9 @@ public class Main {
             System.out.println("3. SEARCH");
             System.out.println("4. DELETE");
             System.out.println("5. EXIT");
+
             String choice = sc.nextLine();
+            
             switch (choice) {
                 case "1", "add", "ADD", "Add":
                     Student student = new Student();
@@ -27,50 +28,39 @@ public class Main {
                     student.setAddress(sc.nextLine());
                     System.out.println("Enter course : ");
                     student.setCourse(sc.nextLine());
-                    students.add(student);
+                    
                     StudentDAO.insertStudent(student);
                     break;
                 
                 case "2", "display", "Display", "DISPLAY":
-                    for (Student s : students) {
-                        System.out.println(s.getName());
-                        System.out.println(s.getMobileNumber());
-                        System.out.println(s.getAddress());
-                        System.out.println(s.getCourse());
-                        System.out.println();
-                    }
+                    StudentDAO.displayStudent();
                     break;
 
                 case "3", "search", "SEARCH", "Search":
-                    System.out.println("Enter student name : ");
-                    String searchName = sc.nextLine();
-                    for (Student b : students) {
-                        if(b.getName().equals(searchName)){
-                            System.out.println(b.getName());
-                            System.out.println(b.getMobileNumber());
-                            System.out.println(b.getAddress());
-                            System.out.println(b.getCourse());
-                            System.out.println();
+                    System.out.println("Enter your preference search by ID or Name: ");
+                    String pref = sc.nextLine();
+                    switch (pref.toLowerCase()) {
+                        case "name":
+                            System.out.println("Enter student name : ");
+                            String searchName = sc.nextLine();
+                            StudentDAO.searchStudentName(searchName);
                             break;
-                        }  
+                            
+                        case "id":
+                            System.out.println("Enter student id : ");
+                            int sid = sc.nextInt();
+                            StudentDAO.searchStudentId(sid);
+                            break;
+                        default :
+                            System.out.println("SORRY!!!!!!!!!!!!!!!");
+                            break;
                     }
                     break;
 
                 case "4", "delete", "Delete", "DELETE":
-                    System.out.println("Enter student name :");
-                    String removeName = sc.nextLine();
-                    boolean found = false;
-                    for (int i = 0; i < students.size(); i++) {
-                        if (students.get(i).getName().equals(removeName)) {
-                            students.remove(i);
-                            System.out.println("Student deleted sucessfully");
-                            found = true;
-                            break;
-                        }    
-                    }
-                    if (!found) {
-                        System.out.println("Student not found");
-                    }
+                    System.out.println("Enter student id :");
+                    int removeStudent = sc.nextInt();
+                    StudentDAO.deleteStudentId(removeStudent);
                     break;
 
                 case "5", "exit", "Exit", "EXIT":
