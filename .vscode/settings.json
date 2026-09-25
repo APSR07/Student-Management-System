@@ -9,7 +9,6 @@
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "D:\\oTHERS\\SELF\\New Scratch\\Coding\\Projects\\java\\StudentManagementSystem\\lib"
     ]
 
 }
