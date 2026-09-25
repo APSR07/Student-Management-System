@@ -1,7 +1,5 @@
 import java.sql.*;
 
-import com.mysql.cj.protocol.Resultset;
-
 public class StudentDAO{
     // insert student
     public static void insertStudent(Student student) {
@@ -131,5 +129,24 @@ public class StudentDAO{
         }
     }
 
+    // DELETE STUDENT BY THEIR ID.
+    public static void deleteStudentId(int id){
+        String sql = "DELET FROM student WHERE name = ?";
 
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)){
+
+                ps.setInt(1, id);
+                int rows = ps.executeUpdate();
+
+                if (rows > 0) {
+                    System.out.println("Student deleted successfully");
+                }else{
+                    System.out.println("Student not found");
+                }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
