@@ -5,12 +5,12 @@ public class StudentDAO{
     public static void insertStudent(Student student) {
         
         // SQL DATA INSERT QUERY 
-        String sql = "INSERT INTO students " +
+        String sql = "INSERT INTO student " +
                      "(Sname, Sdob, Smobilenumber, Saddress, Scourse) " +
                      "VALUES (?, ?, ?, ?, ?)";
-        try {
-            Connection connection = DBConnection.getConnection();
-            PreparedStatement ps = connection.prepareStatement(sql);
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)){
+            
 
             ps.setString(1, student.getName());
             ps.setString(2, student.getDob());
@@ -20,7 +20,6 @@ public class StudentDAO{
 
             ps.executeUpdate();
             System.out.println("Student inserted successfully");
-            connection.close();
         } catch (Exception e) {
             
             e.printStackTrace();
@@ -38,7 +37,7 @@ public class StudentDAO{
             ResultSet rs = ps.executeQuery();)
             { 
                 boolean found = false;
-                while (found) {
+                while (rs.next()) {
                     found = true;
 
                     Student student = new Student();
@@ -46,7 +45,7 @@ public class StudentDAO{
                     student.setId(rs.getInt("Sid"));
                     student.setName(rs.getString("Sname"));
                     student.setDob(rs.getString("Sdob"));
-                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setMobileNumber(rs.getString("Smobilenumber"));
                     student.setAddress(rs.getString("Saddress"));
                     student.setCourse(rs.getString("Scourse"));
 
@@ -81,7 +80,7 @@ public class StudentDAO{
                     student.setId(rs.getInt("Sid"));
                     student.setName(rs.getString("Sname"));
                     student.setDob(rs.getString("Sdob"));
-                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setMobileNumber(rs.getString("Smobilenumber"));
                     student.setAddress(rs.getString("Saddress"));
                     student.setCourse(rs.getString("Scourse"));
 
@@ -113,7 +112,7 @@ public class StudentDAO{
                     student.setId(rs.getInt("Sid"));
                     student.setName(rs.getString("Sname"));
                     student.setDob(rs.getString("Sdob"));
-                    student.setMobileNumber(rs.getString("SmobileNumber"));
+                    student.setMobileNumber(rs.getString("Smobilenumber"));
                     student.setAddress(rs.getString("Saddress"));
                     student.setCourse(rs.getString("Scourse"));
 
@@ -133,7 +132,7 @@ public class StudentDAO{
 
     // DELETE STUDENT BY THEIR ID.
     public static void deleteStudentId(int id){
-        String sql = "DELET FROM student WHERE Sname = ?";
+        String sql = "DELETE FROM student WHERE Sid = ?";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)){

@@ -22,7 +22,7 @@ public class Main {
                     Student student = new Student();
                     System.out.println("Enter Student name :");
                     student.setName(sc.nextLine());
-                    System.out.println("Enter DOB :");
+                    System.out.println("Enter DOB must be in YYYY-MM-DD :");
                     student.setDob(sc.nextLine());
                     System.out.println("Enter Mobile Number :");
                     student.setMobileNumber(sc.nextLine());
@@ -69,6 +69,7 @@ public class Main {
                     running = false;
                     System.out.println("Thank you ! your program endded");
                     break;
+                    
                 default :
                     System.out.println("Wrong choice !!!!!!!!!!!!!!!!!!!!!!");
                     break;
