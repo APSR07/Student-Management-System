@@ -24,7 +24,6 @@ A console-based Student Management System developed using Java, JDBC, and MySQL.
 
 ## Project Structure
 '''
-
 StudentManagementSystem/
 ├── src/
 │   ├── Main.java
