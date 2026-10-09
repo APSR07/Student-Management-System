@@ -23,6 +23,7 @@ A console-based Student Management System developed using Java, JDBC, and MySQL.
 * Visual Studio Code
 
 ## Project Structure
+'''
 
 StudentManagementSystem/
 ├── src/
@@ -43,7 +44,7 @@ StudentManagementSystem/
 ├── .gitignore
 └── .vscode/
     └── settings.json
-
+'''
 
 **Note:** `.env` is a local configuration file and must not be committed to GitHub.
 
