@@ -7,14 +7,19 @@ public class Main {
 
         boolean running = true;
         while (running) {
+            System.out.println("=====================================================");
+            System.out.println("=====================================================");
             System.out.println("--------WELCOME TO STUDENT MANAGEMENT SYSTEM---------");
-            System.out.println("--------MENU---------");
+            System.out.println("=====================================================");
+            System.out.println("------------------------MENU-------------------------");
             System.out.println("1. ADD STUDENT");
             System.out.println("2. DISPLAY STUDENT");
             System.out.println("3. SEARCH");
-            System.out.println("4. DELETE");
-            System.out.println("5. EXIT");
+            System.out.println("4. UPDATE");
+            System.out.println("5. DELETE");
+            System.out.println("6. EXIT");
 
+            System.out.println("ENTER YOUR CHOICE (1-6) : ");
             String choice = sc.nextLine();
             
             switch (choice) {
@@ -59,13 +64,17 @@ public class Main {
                     }
                     break;
 
-                case "4", "delete", "Delete", "DELETE":
+                case "4", "update", "Update", "UPDATE":
+                    
+                    break;
+
+                case "5", "delete", "Delete", "DELETE":
                     System.out.println("Enter student id :");
                     int removeStudent = sc.nextInt();
                     StudentDAO.deleteStudentId(removeStudent);
                     break;
 
-                case "5", "exit", "Exit", "EXIT":
+                case "6", "exit", "Exit", "EXIT":
                     running = false;
                     System.out.println("Thank you ! your program endded");
                     break;
