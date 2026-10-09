@@ -34,11 +34,16 @@ StudentManagementSystem/
 │   ├── mysql-connector-j-9.7.0.jar
 │   └── dotenv-java-3.2.0.jar
 ├── screenshots/
+│   ├── menu.png
+│   ├── add-student.png
+│   ├── display-students.png
+│   └── search-student.png
 ├── database.sql
 ├── README.md
 ├── .gitignore
-└── .env
-```
+└── .vscode/
+    └── settings.json
+
 
 **Note:** `.env` is a local configuration file and must not be committed to GitHub.
 
