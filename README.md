@@ -44,9 +44,6 @@ StudentManagementSystem/
 └── .vscode/
     └── settings.json
 
-
-**Note:** `.env` is a local configuration file and must not be committed to GitHub.
-
 ## Database Setup
 
 1. Install MySQL Server and MySQL Workbench.
