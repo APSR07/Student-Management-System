@@ -1,8 +1,8 @@
 import java.util.Scanner;
-import java.sql.Connection;
+// import java.sql.Connection;
 public class Main {
     public static void main(String[] args) {
-        Connection connection = DBConnection.getConnection();
+        // Connection connection = DBConnection.getConnection();
         Scanner sc = new Scanner(System.in);
 
         boolean running = true;
@@ -65,7 +65,23 @@ public class Main {
                     break;
 
                 case "4", "update", "Update", "UPDATE":
-                    
+                    System.out.println("========================================");
+                    System.out.println("Enter student id :");
+                    int sId = sc.nextInt();
+
+                    System.out.println("========================================");
+                    System.out.println("========================================");
+                    System.out.println("What you want to UPDATE in student data:");
+                    System.out.println("1. Name ");
+                    System.out.println("2. DOB ");
+                    System.out.println("3. Mobile Number ");
+                    System.out.println("4. Address ");
+                    System.out.println("5. Course ");   
+                    System.out.println("Please enter your choice (1-5) : ");
+                    int updateChoice = sc.nextInt();
+                    System.out.println("Enter the new Data of the Student : ");
+                    String newValue = sc.nextLine();
+                    StudentDAO.updateStudent(sId, updateChoice, newValue);
                     break;
 
                 case "5", "delete", "Delete", "DELETE":

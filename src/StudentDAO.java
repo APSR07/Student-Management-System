@@ -1,5 +1,4 @@
 import java.sql.*;
-
 public class StudentDAO{
     // insert student
     public static void insertStudent(Student student) {
@@ -149,5 +148,52 @@ public class StudentDAO{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    // UPDATE STUDENT.
+    public static void updateStudent(int sId, int updateChoice, String newValue){
+        String sql = "";
+        switch (updateChoice) {
+            case 1:
+                sql = "UPDATE student SET Sname = ? WHERE Sid = ?";
+                break;
+            case 2:
+                sql = "UPDATE student SET Sdob = ? WHERE Sid = sId";
+                break;
+            case 3:
+                sql = "UPDATE student SET Smobilenumber = ? WHERE Sid = sId";
+                break;
+            case 4:
+                sql = "UPDATE student SET Saddress = ? WHERE Sid = sId";
+                break;
+            case 5:
+                sql = "UPDATE student SET Scourse = ? WHERE Sid = sId";
+                break;
+            default:
+                System.out.println("Invalid choice !!!!!!!!!!!!!!!!!!!!");
+                break;
+        }
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)){
+            
+            // set the new value
+            switch (updateChoice) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    ps.setString(1, newValue);
+                    break;
+            
+                default:
+                    break;
+            }
+        } catch (SQLException | IllegalArgumentException e) {
+            System.out.println("Unable to update student.");
+            e.printStackTrace();
+        }
+        
     }
 }
