@@ -106,6 +106,10 @@ Screenshots of the application are available in the `screenshots/` directory.
 
 ![Searching for a Student](screenshots/4.search.png)
 
+### Update Student
+
+![Searching for a Student](screenshots/4.search.png)
+
 ### Delete Student
 
 ![Delete a Student](screenshots/5.delete.png)
