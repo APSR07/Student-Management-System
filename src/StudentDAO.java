@@ -196,4 +196,23 @@ public class StudentDAO{
         }
         
     }
+
+    // ID EXIST
+    public static boolean idExist(int sId){
+        String sql = "SELECT Sid FROM student WHERE Sid = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)){
+            
+                ps.setInt(1, sId);
+
+                try(ResultSet rs = ps.executeQuery()){
+                    return rs.next();
+                }
+
+        } catch (SQLException e) {
+            System.out.println("Error checking student ID.");
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

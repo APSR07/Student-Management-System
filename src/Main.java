@@ -68,7 +68,10 @@ public class Main {
                     System.out.println("========================================");
                     System.out.println("Enter student id :");
                     int sId = sc.nextInt();
-
+                    if(!StudentDAO.idExist(sId)){
+                        System.out.println("Error: student ID " +sId+ " is not found!!!!");
+                        break;
+                    }
                     System.out.println("========================================");
                     System.out.println("========================================");
                     System.out.println("What you want to UPDATE in student data:");
