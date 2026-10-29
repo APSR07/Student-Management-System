@@ -190,6 +190,14 @@ public class StudentDAO{
                 default:
                     break;
             }
+
+            int rows = ps.executeUpdate();
+            if (rows > 0) {
+                System.out.println("Student updated successfully!");
+            }
+            else{
+                System.out.println("No student record was updated!!!");
+            }
         } catch (SQLException | IllegalArgumentException e) {
             System.out.println("Unable to update student.");
             e.printStackTrace();
